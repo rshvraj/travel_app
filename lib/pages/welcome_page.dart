@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/misc/colors.dart';
 import 'package:travel_app/widgets/app_large_text.dart';
 import 'package:travel_app/widgets/app_text.dart';
+import 'package:travel_app/widgets/responsive_buttons.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -43,6 +44,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 right: 20,
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,9 +65,28 @@ class _WelcomePageState extends State<WelcomePage> {
                           color: AppColors.textColor2,
                           size: 14,
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      ResponsiveButton(),
                     ],
-                  )
+                  ),
+                  Column(
+                    children: List.generate(3, (indexDots) {
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 2),
+                        width: 8,
+                        height: index == indexDots ? 25 : 8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: index == indexDots
+                              ? AppColors.mainColor
+                              : AppColors.mainColor.withOpacity(0.3),
+                        ),
+                      );
+                    }),
+                  ),
                 ],
               ),
             ),
